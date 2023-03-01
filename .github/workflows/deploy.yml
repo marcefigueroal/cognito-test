@@ -27,9 +27,11 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}  
+        no-fail-on-empty-changeset: "1"
     - name: Deploy Cognito AWS CloudFormation
       run: |
         ls -l  templates      
     - name: Deploy Cognito AWS CloudFormation
       run: |
         aws cloudformation create-stack --stack-name KoandinaCognitoUserPool --timeout-in-minutes 10 --template-url https://koandina-test-bucket.s3.amazonaws.com/deployment-cognito.yaml --parameters ParameterKey=Environment,ParameterValue=${{ secrets.ENVIRONMENT }} ParameterKey=KoandinaMetadataURL,ParameterValue=${{ secrets.KOANDINAMETADATAURL }}
+        
