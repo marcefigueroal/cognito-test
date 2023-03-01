@@ -32,4 +32,4 @@ jobs:
         ls -l  templates      
     - name: Deploy Cognito AWS CloudFormation
       run: |
-        aws cloudformation create-stack --stack-name KoandinaCognitoUserPool --timeout-in-minutes 10 --template-url s3://koandina-test-bucket/deployment-cognito.yaml --parameters ParameterKey=Environment,ParameterValue=${{ secrets.ENVIRONMENT }} ParameterKey=KoandinaMetadataURL,ParameterValue=${{ secrets.KOANDINAMETADATAURL }}
+        aws cloudformation create-stack --stack-name KoandinaCognitoUserPool --timeout-in-minutes 10 --template-url https://koandina-test-bucket.s3.amazonaws.com/deployment-cognito.yaml --parameters ParameterKey=Environment,ParameterValue=${{ secrets.ENVIRONMENT }} ParameterKey=KoandinaMetadataURL,ParameterValue=${{ secrets.KOANDINAMETADATAURL }}
